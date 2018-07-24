@@ -1,0 +1,12 @@
+<div *ngIf="active" class="container">
+  <div class="cover" [style.background]="coverBackground"></div>
+  <div class="view">
+    <div class="messages" [@messagesState]="messagesState">
+      <div class="message" [style.color]="messageColor">{{currentMessage}}</div>
+      <div class="buttons" [@buttonsState]="buttonsState">
+        <button class="next" (click)="nextOrComplete()">{{currentNext}}</button>
+        <button class="skip" (click)="complete()">{{currentSkip}}</button>
+      </div>
+    </div>
+  </div>
+</div>

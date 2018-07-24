@@ -1,0 +1,80 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "simple-step-guide-app": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/simple-step-guide-app",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "assets": [],
+            "styles": [],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "simple-step-guide-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "simple-step-guide-app:build:production"
+            }
+          }
+        }
+      }
+    },
+    "simple-step-guide": {
+      "root": "projects/simple-step-guide",
+      "sourceRoot": "projects/simple-step-guide/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/simple-step-guide/tsconfig.lib.json",
+            "project": "projects/simple-step-guide/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/simple-step-guide/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "simple-step-guide-app"
+}

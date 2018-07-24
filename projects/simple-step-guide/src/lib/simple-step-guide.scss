@@ -1,0 +1,76 @@
+div.container {
+  z-index: 100;
+
+  .cover,
+  .view {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .cover {
+    z-index: 1;
+  }
+  .view {
+    z-index: 2;
+    overflow: hidden;
+
+    .messages {
+      position: absolute;
+      left: 15vw;
+      width: 70vw;
+      .message {
+        font-size: 200%;
+        text-shadow: 1px 1px 10px white;
+        word-wrap: break-word;
+        max-height: 35vh;
+        overflow-y: auto;
+      }
+      .buttons {
+        text-align: right;
+
+        .skip,
+        .next {
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          border: unset;
+          background: unset;
+          cursor: pointer;
+
+          opacity: 0.75;
+          &:hover {
+            opacity: 1;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        .skip {
+          font-size: 80%;
+          text-decoration: underline;
+          color: black;
+        }
+        .next {
+          animation: anim-button-perform 3s ease infinite;
+          transform-origin: 50% 50%;
+          font-size: 200%;
+          color: white;
+          text-shadow: 2px 2px 5px #4e4e4e;
+        }
+      }
+    }
+  }
+}
+
+@keyframes anim-button-perform {
+  0%        { transform: translateY(0) }
+  5.55556%  { transform: translateY(0) }
+  11.11111% { transform: translateY(0) }
+  22.22222% { transform: translateY(-15px) }
+  27.77778% { transform: translateY(0) }
+  33.33333% { transform: translateY(-15px) }
+  44.44444% { transform: translateY(0) }
+  100%      { transform: translateY(0) }
+}
